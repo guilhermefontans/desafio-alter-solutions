@@ -1,0 +1,21 @@
+{
+    "name": "fontans/desafio-alter-solutions",
+    "description": "Sistema com momandos CLI para criação de usuários",
+    "authors": [
+        {
+            "name": "Guilherme Fontans",
+            "email": "guilherme.fontans@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {"ASPTest\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
