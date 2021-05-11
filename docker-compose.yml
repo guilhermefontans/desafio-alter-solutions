@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     app:
-        image: php:7.4-cli
+        build: ./
         working_dir: /usr/src/myapp
         command: tail -f /dev/null
         environment:

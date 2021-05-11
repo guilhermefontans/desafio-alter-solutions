@@ -18,7 +18,7 @@ class UserRepository
     {
         try {
 
-            $sql = "INSERT INTO USER (nome, sobrenome, email, idade) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO usuario (nome, sobrenome, email, idade) VALUES (?, ?, ?, ?)";
 
             $statement = $this->connection->prepare($sql);
             $statement->execute([
