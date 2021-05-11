@@ -9,7 +9,7 @@ return function (ContainerBuilder $containerBuilder) {
         'settings' => [
             'db' => [
                 'driver' => 'pdo_mysql',
-                'host' => '172.20.0.2',// getenv('MYSQL_HOST'),
+                'host' => '172.21.0.2',// getenv('MYSQL_HOST'),
                 'dbname' => 'alter-solutions',//getenv('MYSQL_DATABASE'),
                 'user' => 'root', //getenv('MYSQL_USER'),
                 'password' => '201125', //getenv('MYSQL_PASSWORD'),

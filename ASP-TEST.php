@@ -4,6 +4,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use ASPTest\Command\CreateUserCommand;
+use ASPTest\Command\CreateUserPWDCommand;
 use ASPTest\Repository\UserRepository;
 use DI\ContainerBuilder;
 use Symfony\Component\Console\Application;
@@ -26,5 +27,5 @@ $container = $containerBuilder->build();
 $application = new Application();
 
 $application->add(new CreateUserCommand($container->get(UserRepository::class)));
-
+$application->add(new CreateUserPWDCommand($container->get(UserRepository::class)));
 $application->run();
