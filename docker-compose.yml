@@ -1,16 +1,21 @@
 version: '3.7'
 services:
     app:
+        container_name: 'asp-app'
         build: ./
         env_file:
             - .env
         working_dir: /usr/src/myapp
         command: tail -f /dev/null
         volumes:
-            - .:/usr/src/myapp
+            - ./:/usr/src/myapp
         links:
           - db
+        depends_on:
+          - db
     db:
+        container_name: 'asp-db'
+        restart: on-failure
         image: mariadb
         env_file:
             -   .env
