@@ -20,11 +20,11 @@ return
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => '172.21.0.2',//getenv('MYSQL_HOST'),
-            'name' => 'alter-solutions', //getenv('MYSQL_DATABASE'),
-            'user' => 'root', //getenv('MYSQL_USER'),
-            'pass' => '201125', //getenv('MYSQL_PASSWORD'),
-            'port' => '3306', //getenv('MYSQL_PORT'),
+            'host' => getenv('MYSQL_HOST'),
+            'name' => getenv('MYSQL_DATABASE'),
+            'user' => getenv('MYSQL_USER'),
+            'pass' => getenv('MYSQL_PASSWORD'),
+            'port' => getenv('MYSQL_PORT'),
             'charset' => 'utf8',
         ],
         'testing' => [

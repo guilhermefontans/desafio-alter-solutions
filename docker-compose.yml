@@ -2,18 +2,17 @@ version: '3.7'
 services:
     app:
         build: ./
+        env_file:
+            - .env
         working_dir: /usr/src/myapp
         command: tail -f /dev/null
-        environment:
-            docker: "true"
         volumes:
             - .:/usr/src/myapp
         links:
           - db
     db:
         image: mariadb
-        restart: always
+        env_file:
+            -   .env
         ports:
           - 3306:3306
-        environment:
-            MYSQL_ROOT_PASSWORD: 201125

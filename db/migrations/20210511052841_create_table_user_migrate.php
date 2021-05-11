@@ -22,8 +22,8 @@ final class CreateTableUserMigrate extends AbstractMigration
         $table->addColumn('nome', 'string', ['limit' => 35])
             ->addColumn('sobrenome', 'string', ['limit' => 35])
             ->addColumn('email', 'string', ['limit' => 255])
-            ->addColumn('idade', 'integer', ['limit' => 3])
-            ->addColumn('senha', 'string', ['limit' => 255])
+            ->addColumn('idade', 'integer', ['limit' => 3, 'null' => true])
+            ->addColumn('senha', 'string', ['limit' => 255, 'null' => true])
             ->create();
     }
 }
