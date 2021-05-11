@@ -8,7 +8,9 @@
         }
     ],
     "require": {
-        "symfony/console": "^5.2"
+        "symfony/console": "^5.2",
+        "ext-pdo": "*",
+        "php-di/php-di": "^6.3"
     },
     "autoload": {
         "psr-4": {"ASPTest\\": "src/"}
