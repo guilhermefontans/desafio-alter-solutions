@@ -1,23 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ASPTest\Command;
 
+use ASPTest\Domain\Factory\UserFactory;
 use ASPTest\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+/**
+ * Class CreateUserCommand
+ *
+ * @package ASPTest\Command
+ */
 class CreateUserCommand extends Command
 {
+    /** @var UserRepository $userRepository */
     private $userRepository;
+
+    /** @var UserFactory $userFactory */
+    private $userFactory;
 
     protected static $defaultName = 'USER-CREATE';
 
-    public function __construct(UserRepository $userRepository)
+
+    public function __construct(UserRepository $userRepository, UserFactory $userFactory)
     {
         parent::__construct();
         $this->userRepository = $userRepository;
+        $this->userFactory = $userFactory;
     }
 
     protected function configure()
@@ -27,20 +41,30 @@ class CreateUserCommand extends Command
             ->setHelp("Este comando cria um novo usuário na base de dados de acordo com os dados informados");
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $data = $this->getAnswers($input, $output);
-            $id         =  $this->userRepository->persist($data);
-            $data['id'] = $id;
-
-            print json_encode($data) . PHP_EOL;
+            $user = $this->userFactory->newEntity($data);
+            $userCreated =  $this->userRepository->persist($user);
+            $output->writeln(\json_encode($userCreated));
             return Command::SUCCESS;
         } catch (\Exception $ex) {
+            $output->writeln($ex->getMessage());
             return Command::FAILURE;
         }
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return array
+     */
     private function getAnswers(InputInterface $input, OutputInterface $output): array
     {
         $helper = $this->getHelper('question');

@@ -5,6 +5,8 @@ require __DIR__.'/vendor/autoload.php';
 
 use ASPTest\Command\CreateUserCommand;
 use ASPTest\Command\CreateUserPWDCommand;
+use ASPTest\Domain\Encrypt;
+use ASPTest\Domain\Factory\UserFactory;
 use ASPTest\Repository\UserRepository;
 use DI\ContainerBuilder;
 use Symfony\Component\Console\Application;
@@ -26,6 +28,12 @@ $repositories($containerBuilder);
 $container = $containerBuilder->build();
 $application = new Application();
 
-$application->add(new CreateUserCommand($container->get(UserRepository::class)));
-$application->add(new CreateUserPWDCommand($container->get(UserRepository::class)));
+$application->add(new CreateUserCommand(
+    $container->get(UserRepository::class),
+    $container->get(UserFactory::class)
+));
+$application->add(new CreateUserPWDCommand(
+    $container->get(UserRepository::class),
+    $container->get(Encrypt::class)
+));
 $application->run();

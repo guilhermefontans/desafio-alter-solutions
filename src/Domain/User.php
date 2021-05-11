@@ -1,13 +1,14 @@
 <?php
 
 
-namespace ASPTest;
+namespace ASPTest\Domain;
 
 class User
 {
 
     /** @var int $id */
-    private $id
+    private $id;
+
     /** @var string $nome */
     private $nome;
 
@@ -20,8 +21,9 @@ class User
     /** @var int $idade*/
     private $idade;
 
-    /** @var string $password */
-    private $password;
+    /** @var string $senha */
+    private $senha;
+
 
     /**
      * User constructor.
@@ -39,9 +41,68 @@ class User
         $this->idade = $idade;
     }
 
-    public function setPassword($password)
+    /**
+     * @return int
+     */
+    public function getId(): ?int
     {
-        $this->password = $password;
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSobrenome(): string
+    {
+        return $this->sobrenome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdade(): ?int
+    {
+        return $this->idade;
+    }
+
+    /**
+     * @param string $senha
+     */
+    public function setSenha($senha)
+    {
+        $this->senha = $senha;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSenha()
+    {
+        return $this->senha;
     }
 
     public function getProperties()

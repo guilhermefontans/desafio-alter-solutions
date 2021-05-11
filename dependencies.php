@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use ASPTest\Domain\Encrypt;
 use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 
@@ -10,6 +11,7 @@ return function (ContainerBuilder $containerBuilder) {
             $config = $container->get('settings')['db'];
             $conn = new \PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['user'], $config['password']);
             return $conn;
-        }
+        },
+        Encrypt::class => \DI\autowire(Encrypt::class),
     ]);
 };
