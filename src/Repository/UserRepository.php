@@ -5,7 +5,6 @@ namespace ASPTest\Repository;
 
 
 use ASPTest\Domain\Factory\UserFactory;
-use http\Exception\RuntimeException;
 
 class UserRepository
 {
@@ -35,7 +34,7 @@ class UserRepository
             ]);
 
             if (! $this->connection->lastInsertId()) {
-                throw new RuntimeException('Erro ao salvar o usuário na base de dados');
+                throw new \RuntimeException('Erro ao salvar o usuário na base de dados');
             }
             $usuario->setId($this->connection->lastInsertId());
             return $usuario->getProperties();
