@@ -16,7 +16,8 @@ O desenvolvimento desse projeto foi efetuado utilizando as seguintes ferramentas
 
 A estrutura de pastas que estão dentro da pasta `src` mantém as camadas separadas, facilitando o entendimento do que cada uma é responsável:
 ```
-- Command: Este módulo é o resposável por manter os arquivos que irão extender o componente do console do symfony, vindo a criar os comandos solicitados em UC-001 e UC-002
+- Command: Este módulo é o resposável por manter os arquivos que irão extender o componente do console do symfony,
+vindo a criar os comandos solicitados em UC-001 e UC-002
 um arquivo que trata cada rota definida para o serviço.
 
 - Domain: Essa pasta é responsável por conter as classes de regras de negócio.
